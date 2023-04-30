@@ -1,1 +1,66 @@
+<odoo>
+  <data>
 
+  <record model="ir.ui.view" id="library.book_list">
+    <field name="name">library book list</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="author"/>
+        <field name="editorial"/>
+
+      </tree>
+    </field>
+  </record>
+
+ <record model="ir.ui.view" id="library.book_form">
+    <field name="name">library book form</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+        <form string="Book form">
+            <h1>
+              <field name="name"/>
+            </h1>
+            <group>
+                <group name="uno" string="General information">
+                    <group>
+                        
+                        <field name="author"/>
+                        <field name="editorial"/>
+                    </group>
+                </group>
+                <group name="dos" string="More information">
+                    <group>
+                        <field name="isbn"/>
+                        <field name="year"/>
+                        <field name="category"/>
+                        <field name="pages"/>
+                    </group>
+                </group>
+            </group>
+            <notebook>
+            <page name="loans" string="Loans">
+              <group>
+
+              </group>
+            </page>
+            </notebook>
+        </form>
+    </field>
+</record>
+
+
+  <record model="ir.actions.act_window" id="library.book_action">
+    <field name="name">Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem name="Library DM" id="library.menu_root"/>
+  <menuitem name="Books" id="library.menu_1" parent="library.menu_root"/>
+  <menuitem name="Book" id="library.menu_1_list" parent="library.menu_1" action="library.book_action"/>
+
+
+  </data>
+</odoo>
